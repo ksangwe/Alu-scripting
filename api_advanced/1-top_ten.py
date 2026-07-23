@@ -5,11 +5,10 @@ import requests
 
 def top_ten(subreddit):
     """Print the titles of the top 10 hot posts, or None if invalid."""
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {"User-Agent": "linux:alu.api.advanced:v1.0.0 (by /u/ksangwe)"}
-    params = {"limit": 10}
 
-    response = requests.get(url, headers=headers, params=params,
+    response = requests.get(url, headers=headers,
                             allow_redirects=False)
 
     if response.status_code != 200:
